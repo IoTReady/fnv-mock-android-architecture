@@ -41,8 +41,7 @@ public class TransferOutFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_transfer_out, container, false);
 
         // creating a ViewModel
-        TransferOutFragmentViewModel mViewModel = new TransferOutFragmentViewModel();
-
+        TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
         // show the recycler view when the button is clicked
         Button transferOutButton = view.findViewById(R.id.transfer_out_button);
         transferOutButton.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +57,7 @@ public class TransferOutFragment extends Fragment {
 
         // creating a spinner
         Spinner spinner =  view.findViewById(R.id.search_hub_spinner);
-        mViewModel.getDestinationListLiveData().observe(this.requireActivity(), new Observer<List<TransferOutModel>>() {
+        transferOutFragmentViewModel.getDestinationListLiveData().observe(this.requireActivity(), new Observer<List<TransferOutModel>>() {
             @Override
             public void onChanged(List<TransferOutModel> transfer2) {
                 if(getContext() != null) {
@@ -73,6 +72,7 @@ public class TransferOutFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TransferOutModel selectedDestination = (TransferOutModel) adapterView.getItemAtPosition(i);
                 String selectedWarehouse = selectedDestination.getDestination();
+                transferOutFragmentViewModel.getSelectedWarehouseLiveData().setValue(selectedWarehouse);
             }
 
             @Override

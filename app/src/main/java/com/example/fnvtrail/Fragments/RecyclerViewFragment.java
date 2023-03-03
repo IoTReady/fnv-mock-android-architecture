@@ -21,6 +21,7 @@ import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
 import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
 import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
 import com.example.fnvtrail.R;
+import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
 
 import java.util.Arrays;
 
@@ -37,13 +38,25 @@ public class RecyclerViewFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.common_recycler_view);
-        ProcurementFragmentViewModel mViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
+        ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
+        TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
 
-        mViewModel.getSelectedSupplierLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+        procurementFragmentViewModel.getSelectedSupplierLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String selectedSupplier) {
                 Log.d("selected Supplier", selectedSupplier);
                 RecyclerViewAdapter adapter = new RecyclerViewAdapter(Arrays.asList(selectedSupplier));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL));
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
+        transferOutFragmentViewModel.getSelectedWarehouseLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String selectedWarehouse) {
+                Log.d("selected Warehouse", selectedWarehouse);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(Arrays.asList(selectedWarehouse));
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL));
                 recyclerView.setAdapter(adapter);
