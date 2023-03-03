@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -16,33 +15,46 @@ import com.example.fnvtrail.Fragments.ProcurementFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ReplaceFragment(new TransferOutFragment());
+
+        if (savedInstanceState != null) {
+            currentFragment = getSupportFragmentManager().getFragment(savedInstanceState, "currentFragment");
+        } else {
+            currentFragment = new TransferOutFragment();
+        }
+
+        ReplaceFragment(currentFragment);
 
         binding.botomnav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.transfer:
-                        ReplaceFragment(new TransferOutFragment());
+                        currentFragment = new TransferOutFragment();
+                        ReplaceFragment(currentFragment);
                         break;
                     case R.id.procurement:
-                        ReplaceFragment(new ProcurementFragment());
+                        currentFragment = new ProcurementFragment();
+                        ReplaceFragment(currentFragment);
                         break;
                 }
-                return  true;
+                return true;
             }
         });
     }
 
-    // TODO: 01/03/23 use this ReplaceFragment(Fragment fragment) in other places as well.
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        getSupportFragmentManager().putFragment(outState, "currentFragment", currentFragment);
+    }
+
     private void ReplaceFragment(Fragment fragment){
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
