@@ -12,17 +12,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
-import com.example.fnvtrail.Models.ProcurementModel;
 import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
 import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
 import com.example.fnvtrail.R;
 
-import java.util.List;
+import java.util.Arrays;
 
 public class RecyclerViewFragment extends Fragment {
 
@@ -37,14 +37,16 @@ public class RecyclerViewFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.common_recycler_view);
-        ProcurementFragmentViewModel mViewModel = new ProcurementFragmentViewModel();
+        ProcurementFragmentViewModel mViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
 
-        mViewModel.getSkuListLiveData().observe(getViewLifecycleOwner(), new Observer<List<ProcurementModel>>() {
+        mViewModel.getSelectedSupplierLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
-            public void onChanged(List<ProcurementModel> procurementModels) {
+            public void onChanged(String selectedSupplier) {
+                Log.d("selected Supplier", selectedSupplier);
+                RecyclerViewAdapter adapter = new RecyclerViewAdapter(Arrays.asList(selectedSupplier));
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL));
-//                recyclerView.setAdapter(new RecyclerViewAdapter.ViewHolder());
+                recyclerView.setAdapter(adapter);
             }
         });
         return view;

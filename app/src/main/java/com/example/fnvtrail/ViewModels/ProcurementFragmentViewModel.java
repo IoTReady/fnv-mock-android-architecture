@@ -16,9 +16,13 @@ public class ProcurementFragmentViewModel extends ViewModel {
     private final MutableLiveData<List<ProcurementModel>> skuListLiveData;
     private final MutableLiveData<List<ProcurementModel>> procurementListLiveData;
 
+    private final MutableLiveData<String> selectedSupplierLiveData;
+
+
     public ProcurementFragmentViewModel() {
         supplierListLiveData = new MutableLiveData<>();
         skuListLiveData = new MutableLiveData<>();
+        selectedSupplierLiveData = new MutableLiveData<>();
         supplierListLiveData.postValue(getSupplierList(getProcurementList()));
         skuListLiveData.postValue(getSKUList(getProcurementList()));
         procurementListLiveData = new MutableLiveData<>();
@@ -56,5 +60,9 @@ public class ProcurementFragmentViewModel extends ViewModel {
 
     public LiveData<List<ProcurementModel>> getSkuListLiveData() {
         return skuListLiveData;
+    }
+
+    public MutableLiveData<String> getSelectedSupplierLiveData() {
+        return selectedSupplierLiveData;
     }
 }
