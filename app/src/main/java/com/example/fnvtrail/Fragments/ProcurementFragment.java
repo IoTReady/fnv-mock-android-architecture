@@ -39,11 +39,12 @@ public class ProcurementFragment extends Fragment {
 
         ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
 
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
+
         Button completeActivity = view.findViewById(R.id.complete_activity);
         completeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.procurement_cardView, recyclerViewFragment);
                 transaction.addToBackStack(null);

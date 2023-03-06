@@ -40,11 +40,11 @@ public class TransferOutFragment extends Fragment {
         TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
         // show the recycler view when the button is clicked
         Button getCrateButton = view.findViewById(R.id.get_crate);
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
         getCrateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // creating a recyclerViewFragment instance and replacing it with the card-view
-                RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.transfer_out_cardView, recyclerViewFragment);
                 transaction.commit();
