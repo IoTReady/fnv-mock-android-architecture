@@ -18,6 +18,7 @@
     import android.view.ViewGroup;
 
     import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
+    import com.example.fnvtrail.Models.generateCrateID;
     import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
     import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
     import com.example.fnvtrail.R;
@@ -52,9 +53,21 @@
                 procurementFragmentViewModel.getSelectedSupplier().observe(getViewLifecycleOwner(), new Observer<String>() {
                     @Override
                     public void onChanged(String selectedSupplier) {
-                        Log.d("selected Supplier", selectedSupplier);
-                        adapter.setData(Arrays.asList(selectedSupplier));
-                        adapter.notifyItemRangeChanged(0,10);
+                        String selectedSKU = procurementFragmentViewModel.getSelectedSKU().getValue();
+                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU, crateID));
+                        adapter.notifyItemRangeChanged(0, 10);
+                        Log.d("selected Supplier", selectedSupplier + " | selected SKU: " + selectedSKU);
+                    }
+                });
+                procurementFragmentViewModel.getSelectedSKU().observe(getViewLifecycleOwner(), new Observer<String>() {
+                    @Override
+                    public void onChanged(String selectedSKU) {
+                        String selectedSupplier = procurementFragmentViewModel.getSelectedSupplier().getValue();
+                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU, crateID));
+                        adapter.notifyItemRangeChanged(0, 10);
+                        Log.d("selected SKU", selectedSKU + " | selected Supplier: " + selectedSupplier);
                     }
                 });
             }

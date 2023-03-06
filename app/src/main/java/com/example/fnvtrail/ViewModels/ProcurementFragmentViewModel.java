@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.fnvtrail.Models.ProcurementModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProcurementFragmentViewModel extends ViewModel {
@@ -17,6 +18,7 @@ public class ProcurementFragmentViewModel extends ViewModel {
     private final MutableLiveData<List<ProcurementModel>> procurementListLiveData;
 
     private final MutableLiveData<String> selectedSupplier;
+    private final MutableLiveData<String> selectedSKU;
 
     public ProcurementFragmentViewModel() {
         supplierListLiveData = new MutableLiveData<>();
@@ -30,6 +32,9 @@ public class ProcurementFragmentViewModel extends ViewModel {
 
         selectedSupplier = new MutableLiveData<>();
         selectedSupplier.postValue("");
+
+        selectedSKU = new MutableLiveData<>();
+        selectedSKU.postValue("");
     }
 
     public List<ProcurementModel> getProcurementList() {
@@ -68,4 +73,5 @@ public class ProcurementFragmentViewModel extends ViewModel {
     public MutableLiveData<String> getSelectedSupplier() {
         return selectedSupplier;
     }
+    public MutableLiveData<String> getSelectedSKU() { return selectedSKU; }
 }

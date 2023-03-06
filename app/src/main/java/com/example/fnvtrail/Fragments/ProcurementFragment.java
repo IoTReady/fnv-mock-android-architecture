@@ -90,7 +90,8 @@ public class ProcurementFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ProcurementModel selectedSKU = (ProcurementModel) adapterView.getItemAtPosition(i);
-                String selectedWarehouse = selectedSKU.getSKU();
+                String selectedSKUString = selectedSKU.getSKU();
+                procurementFragmentViewModel.getSelectedSKU().setValue(selectedSKUString);
             }
 
             @Override
@@ -100,8 +101,6 @@ public class ProcurementFragment extends Fragment {
         });
         return view;
     }
-
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
