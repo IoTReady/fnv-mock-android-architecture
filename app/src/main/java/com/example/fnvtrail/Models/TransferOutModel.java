@@ -3,23 +3,23 @@ package com.example.fnvtrail.Models;
 import androidx.annotation.NonNull;
 
 public class TransferOutModel {
-    String destination;
+    String warehouse;
 
-    public TransferOutModel(String destination) {
-        this.destination = destination;
+    public TransferOutModel(String warehouse) {
+        this.warehouse = warehouse;
     }
 
-    public String getDestination() {
-        return destination;
+    public String getWarehouse() {
+        return warehouse;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setWarehouse(String warehouse) {
+        this.warehouse = warehouse;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return destination;
+        return warehouse;
     }
 }

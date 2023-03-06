@@ -1,7 +1,6 @@
 package com.example.fnvtrail.Fragments;
 
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -11,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +27,6 @@ import java.util.List;
 public class ProcurementFragment extends Fragment {
 
     private ProcurementFragmentViewModel mViewModel;
-
-    MutableLiveData<String> selectedWarehouseLiveData;
-    Bundle bundle = new Bundle();
-
     public static ProcurementFragment newInstance() {
         return new ProcurementFragment();
     }
@@ -43,14 +37,13 @@ public class ProcurementFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_procurement, container, false);
 
-        ProcurementFragmentViewModel mViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
+        ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
 
         Button completeActivity = view.findViewById(R.id.complete_activity);
         completeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
-//                recyclerViewFragment.setArguments(bundle);
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.procurement_cardView, recyclerViewFragment);
                 transaction.commit();
@@ -59,7 +52,7 @@ public class ProcurementFragment extends Fragment {
 
         // creating a spinner
         Spinner supplierSpinner =  view.findViewById(R.id.supplier_spinner);
-        mViewModel.getSupplierListLiveData().observe(this.requireActivity(), new Observer<List<ProcurementModel>>() {
+        procurementFragmentViewModel.getSupplierListLiveData().observe(this.requireActivity(), new Observer<List<ProcurementModel>>() {
             public void onChanged(List<ProcurementModel> procurementModels) {
                 if(getContext() != null) {
                     ArrayAdapter<ProcurementModel> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, procurementModels);
@@ -73,7 +66,7 @@ public class ProcurementFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ProcurementModel selectedSupplier = (ProcurementModel) adapterView.getItemAtPosition(i);
                 String selectedSupplierString = selectedSupplier.getSupplier();
-                mViewModel.getSelectedSupplierLiveData().setValue(selectedSupplierString);
+                procurementFragmentViewModel.getSelectedSupplier().setValue(selectedSupplierString);
             }
 
             @Override
@@ -83,7 +76,7 @@ public class ProcurementFragment extends Fragment {
         });
         Spinner skuSpinner =  view.findViewById(R.id.sku_spinner);
 
-        mViewModel.getSkuListLiveData().observe(this.requireActivity(), new Observer<List<ProcurementModel>>() {
+        procurementFragmentViewModel.getSkuListLiveData().observe(this.requireActivity(), new Observer<List<ProcurementModel>>() {
             public void onChanged(List<ProcurementModel> procurementModels) {
                 if (getContext() != null) {
                     ArrayAdapter<ProcurementModel> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, procurementModels);
@@ -97,10 +90,6 @@ public class ProcurementFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ProcurementModel selectedSKU = (ProcurementModel) adapterView.getItemAtPosition(i);
                 String selectedWarehouse = selectedSKU.getSKU();
-            }
-
-            public ProcurementModel getSelectedSKU(AdapterView<?> adapterView) {
-                return (ProcurementModel) adapterView.getItemAtPosition(0);
             }
 
             @Override

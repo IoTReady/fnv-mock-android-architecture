@@ -41,7 +41,7 @@ public class RecyclerViewFragment extends Fragment {
         ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
         TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
 
-        procurementFragmentViewModel.getSelectedSupplierLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+        procurementFragmentViewModel.getSelectedSupplier().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String selectedSupplier) {
                 Log.d("selected Supplier", selectedSupplier);
@@ -52,7 +52,7 @@ public class RecyclerViewFragment extends Fragment {
             }
         });
 
-        transferOutFragmentViewModel.getSelectedWarehouseLiveData().observe(getViewLifecycleOwner(), new Observer<String>() {
+        transferOutFragmentViewModel.getSelectedWarehouse().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String selectedWarehouse) {
                 Log.d("selected Warehouse", selectedWarehouse);

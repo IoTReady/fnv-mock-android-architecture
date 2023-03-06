@@ -11,28 +11,30 @@ import java.util.List;
 
 public class TransferOutFragmentViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    private final MutableLiveData<List<TransferOutModel>> destinationList;
-    private final MutableLiveData<String> selectedWarehouseLiveData;
+    private final MutableLiveData<List<TransferOutModel>> warehouseList;
+    private final MutableLiveData<String> selectedWarehouse;
 
     public TransferOutFragmentViewModel(){
-        destinationList = new MutableLiveData<>();
-        selectedWarehouseLiveData = new MutableLiveData<>();
-        destinationList.postValue(getDestinationList());
+        warehouseList = new MutableLiveData<>();
+        warehouseList.postValue(getWarehouseList());
+
+        selectedWarehouse = new MutableLiveData<>();
+        selectedWarehouse.postValue("");
     }
 
-    public MutableLiveData<String> getSelectedWarehouseLiveData() {
-        return selectedWarehouseLiveData;
+    public MutableLiveData<String> getSelectedWarehouse() {
+        return selectedWarehouse;
     }
 
-    public List<TransferOutModel> getDestinationList() {
-        List<TransferOutModel> destinationList = new ArrayList<>();
-        destinationList.add(new TransferOutModel("Warehouse 1"));
-        destinationList.add(new TransferOutModel("Warehouse 2"));
-        destinationList.add(new TransferOutModel("Warehouse 3"));
-        return destinationList;
+    public List<TransferOutModel> getWarehouseList() {
+        List<TransferOutModel> warehouseList = new ArrayList<>();
+        warehouseList.add(new TransferOutModel("Warehouse 1"));
+        warehouseList.add(new TransferOutModel("Warehouse 2"));
+        warehouseList.add(new TransferOutModel("Warehouse 3"));
+        return warehouseList;
     }
 
-    public LiveData<List<TransferOutModel>> getDestinationListLiveData() {
-        return destinationList;
+    public LiveData<List<TransferOutModel>> getWarehouseListLiveData() {
+        return warehouseList;
     }
 }

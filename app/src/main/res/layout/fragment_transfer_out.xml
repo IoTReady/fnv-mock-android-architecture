@@ -46,7 +46,7 @@
                             android:layout_centerVertical="true"
                             android:layout_margin="10dp"
                             android:layout_marginStart="8dp"
-                            android:layout_toStartOf="@+id/search_hub_spinner"
+                            android:layout_toStartOf="@+id/search_warehouse_spinner"
                             android:text="Select Destination"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textStyle="bold"
@@ -57,7 +57,7 @@
                             app:layout_constraintVertical_bias="0.058" />
 
                         <Spinner
-                            android:id="@+id/search_hub_spinner"
+                            android:id="@+id/search_warehouse_spinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -207,7 +207,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/transfer_out_button"
+                android:id="@+id/get_crate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/purple_200"
