@@ -1,6 +1,6 @@
 package com.example.fnvtrail;
 
-public class generateCrateID {
+public class GenerateCrateID {
 
     private static final long LIMIT = 10000000000L;
     private static long last = 0;

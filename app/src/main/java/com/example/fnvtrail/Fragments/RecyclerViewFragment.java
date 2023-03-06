@@ -18,7 +18,7 @@
     import android.view.ViewGroup;
 
     import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
-    import com.example.fnvtrail.generateCrateID;
+    import com.example.fnvtrail.GenerateCrateID;
     import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
     import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
     import com.example.fnvtrail.R;
@@ -89,7 +89,7 @@
 
         private void generateCrateIDList() {
             for(int i = 0; i < 4; i++) {
-                String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                String crateID = "Crate ID: " + String.valueOf(GenerateCrateID.generateCrateID());
                 adapter.addData(crateID);
                 adapter.notifyItemRangeChanged(0,10);
             }
