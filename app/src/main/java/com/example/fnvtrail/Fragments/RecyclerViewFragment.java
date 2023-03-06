@@ -53,9 +53,12 @@
                     @Override
                     public void onChanged(String selectedSupplier) {
                         String selectedSKU = procurementFragmentViewModel.getSelectedSKU().getValue();
-                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU, crateID));
-                        adapter.notifyItemRangeChanged(0, 10);
+                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU));
+                        for(int i = 0; i < 4; i++) {
+                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                            adapter.addData(crateID);
+                            adapter.notifyItemRangeChanged(0, 10);
+                        }
                         Log.d("selected Supplier", selectedSupplier + " | selected SKU: " + selectedSKU);
                     }
                 });
@@ -63,9 +66,12 @@
                     @Override
                     public void onChanged(String selectedSKU) {
                         String selectedSupplier = procurementFragmentViewModel.getSelectedSupplier().getValue();
-                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU, crateID));
-                        adapter.notifyItemRangeChanged(0, 10);
+                        adapter.setData(Arrays.asList(selectedSupplier, selectedSKU));
+                        for(int i = 0; i < 4; i++) {
+                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                            adapter.addData(crateID);
+                            adapter.notifyItemRangeChanged(0, 10);
+                        }
                         Log.d("selected SKU", selectedSKU + " | selected Supplier: " + selectedSupplier);
                     }
                 });
@@ -75,9 +81,12 @@
                     @Override
                     public void onChanged(String selectedWarehouse) {
                         Log.d("selected Warehouse", selectedWarehouse);
-                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                        adapter.setData(Arrays.asList(selectedWarehouse, crateID));
-                        adapter.notifyItemRangeChanged(0,10);
+                        adapter.setData(Arrays.asList(selectedWarehouse));
+                        for(int i = 0; i < 4; i++) {
+                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                            adapter.addData(crateID);
+                            adapter.notifyItemRangeChanged(0,10);
+                        }
                     }
                 });
             }

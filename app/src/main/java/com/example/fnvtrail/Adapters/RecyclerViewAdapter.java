@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fnvtrail.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -46,5 +47,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void setData(List<String> crateList) {
         this.crateList = crateList;
+    }
+
+    public void addData(String newData) {
+        List<String> tempList = new ArrayList<>(crateList);
+        tempList.add(newData);
+        crateList = tempList;
+        notifyDataSetChanged();
     }
 }
