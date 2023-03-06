@@ -46,6 +46,7 @@ public class ProcurementFragment extends Fragment {
                 RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.procurement_cardView, recyclerViewFragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
