@@ -54,11 +54,7 @@
                     public void onChanged(String selectedSupplier) {
                         String selectedSKU = procurementFragmentViewModel.getSelectedSKU().getValue();
                         adapter.setData(Arrays.asList(selectedSupplier, selectedSKU));
-                        for(int i = 0; i < 4; i++) {
-                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                            adapter.addData(crateID);
-                            adapter.notifyItemRangeChanged(0, 10);
-                        }
+                        generateCrateIDList();
                         Log.d("selected Supplier", selectedSupplier + " | selected SKU: " + selectedSKU);
                     }
                 });
@@ -67,11 +63,7 @@
                     public void onChanged(String selectedSKU) {
                         String selectedSupplier = procurementFragmentViewModel.getSelectedSupplier().getValue();
                         adapter.setData(Arrays.asList(selectedSupplier, selectedSKU));
-                        for(int i = 0; i < 4; i++) {
-                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                            adapter.addData(crateID);
-                            adapter.notifyItemRangeChanged(0, 10);
-                        }
+                        generateCrateIDList();
                         Log.d("selected SKU", selectedSKU + " | selected Supplier: " + selectedSupplier);
                     }
                 });
@@ -82,11 +74,7 @@
                     public void onChanged(String selectedWarehouse) {
                         Log.d("selected Warehouse", selectedWarehouse);
                         adapter.setData(Arrays.asList(selectedWarehouse));
-                        for(int i = 0; i < 4; i++) {
-                            String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
-                            adapter.addData(crateID);
-                            adapter.notifyItemRangeChanged(0,10);
-                        }
+                        generateCrateIDList();
                     }
                 });
             }
@@ -97,5 +85,13 @@
             super.onActivityCreated(savedInstanceState);
             mViewModel = new ViewModelProvider(this).get(RecyclerViewViewModel.class);
             // TODO: Use the ViewModel
+        }
+
+        private void generateCrateIDList() {
+            for(int i = 0; i < 4; i++) {
+                String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                adapter.addData(crateID);
+                adapter.notifyItemRangeChanged(0,10);
+            }
         }
     }
