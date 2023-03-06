@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/transfer"
+    <item android:title=  "@string/transfer_out"
         android:id="@+id/transfer"/>
     <item android:title="@string/procurement"
         android:id="@+id/procurement"/>

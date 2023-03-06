@@ -1,4 +1,4 @@
-package com.example.fnvtrail.Models;
+package com.example.fnvtrail;
 
 public class generateCrateID {
 

@@ -28,6 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:itemIconTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navmenu"/>
+        app:menu="@menu/navigation_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

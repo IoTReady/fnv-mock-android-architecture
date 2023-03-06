@@ -18,14 +18,13 @@
     import android.view.ViewGroup;
 
     import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
-    import com.example.fnvtrail.Models.generateCrateID;
+    import com.example.fnvtrail.generateCrateID;
     import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
     import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
     import com.example.fnvtrail.R;
     import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
 
     import java.util.Arrays;
-    import java.util.Objects;
 
     public class RecyclerViewFragment extends Fragment {
 
