@@ -76,7 +76,8 @@
                     @Override
                     public void onChanged(String selectedWarehouse) {
                         Log.d("selected Warehouse", selectedWarehouse);
-                        adapter.setData(Arrays.asList(selectedWarehouse));
+                        String crateID = "Crate ID: " + String.valueOf(generateCrateID.generateCrateID());
+                        adapter.setData(Arrays.asList(selectedWarehouse, crateID));
                         adapter.notifyItemRangeChanged(0,10);
                     }
                 });
