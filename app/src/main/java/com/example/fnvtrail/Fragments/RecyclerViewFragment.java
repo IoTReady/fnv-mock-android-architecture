@@ -83,6 +83,11 @@
             return view;
         }
         @Override
+        public void onDestroyView() {
+            super.onDestroyView();
+            binding = null;
+        }
+        @Override
         public void onActivityCreated(@Nullable Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             mViewModel = new ViewModelProvider(this).get(RecyclerViewViewModel.class);
