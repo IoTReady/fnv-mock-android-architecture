@@ -29,7 +29,6 @@
 
     public class RecyclerViewFragment extends Fragment {
 
-        private RecyclerViewViewModel mViewModel;
         private RecyclerViewAdapter adapter;
         private FragmentRecyclerViewBinding binding;
         public static RecyclerViewFragment newInstance() {
@@ -40,8 +39,12 @@
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
             binding = FragmentRecyclerViewBinding.inflate(getLayoutInflater(), container, true);
-            View view = binding.getRoot();
+            return binding.getRoot();
+        }
 
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
             ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
             TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
 
@@ -80,18 +83,11 @@
                     }
                 });
             }
-            return view;
         }
         @Override
         public void onDestroyView() {
             super.onDestroyView();
             binding = null;
-        }
-        @Override
-        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            mViewModel = new ViewModelProvider(this).get(RecyclerViewViewModel.class);
-            // TODO: Use the ViewModel
         }
 
         private void generateCrateIDList() {
