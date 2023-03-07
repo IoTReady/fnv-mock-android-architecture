@@ -34,6 +34,7 @@ public class ProcurementFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
         binding = FragmentProcurementBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
@@ -41,7 +42,6 @@ public class ProcurementFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        procurementFragmentViewModel = new ViewModelProvider(this).get(ProcurementFragmentViewModel.class);
 
         recyclerViewFragment = new RecyclerViewFragment();
         binding.completeActivity.setOnClickListener(new View.OnClickListener() {
