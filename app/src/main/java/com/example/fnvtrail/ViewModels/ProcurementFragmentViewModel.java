@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 import com.example.fnvtrail.Models.ProcurementModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ProcurementFragmentViewModel extends ViewModel {

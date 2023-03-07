@@ -1,27 +1,23 @@
     package com.example.fnvtrail.Fragments;
 
-    import androidx.lifecycle.Observer;
-    import androidx.lifecycle.ViewModelProvider;
-
     import android.os.Bundle;
-
-    import androidx.annotation.NonNull;
-    import androidx.annotation.Nullable;
-    import androidx.fragment.app.Fragment;
-    import androidx.recyclerview.widget.DividerItemDecoration;
-    import androidx.recyclerview.widget.LinearLayoutManager;
-    import androidx.recyclerview.widget.RecyclerView;
-
     import android.util.Log;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
 
+    import androidx.annotation.NonNull;
+    import androidx.annotation.Nullable;
+    import androidx.fragment.app.Fragment;
+    import androidx.lifecycle.Observer;
+    import androidx.lifecycle.ViewModelProvider;
+    import androidx.recyclerview.widget.DividerItemDecoration;
+    import androidx.recyclerview.widget.LinearLayoutManager;
+
     import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
     import com.example.fnvtrail.GenerateCrateID;
-    import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
-    import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
     import com.example.fnvtrail.R;
+    import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
     import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
     import com.example.fnvtrail.databinding.FragmentRecyclerViewBinding;
 

@@ -1,7 +1,6 @@
 package com.example.fnvtrail.Models;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class ProcurementModel {
 
