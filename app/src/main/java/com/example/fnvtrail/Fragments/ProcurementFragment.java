@@ -27,8 +27,9 @@ import java.util.List;
 
 public class ProcurementFragment extends Fragment {
 
-    private ProcurementFragmentViewModel mViewModel;
+    private ProcurementFragmentViewModel procurementFragmentViewModel;
     private FragmentProcurementBinding binding;
+    private RecyclerViewFragment recyclerViewFragment;
     public static ProcurementFragment newInstance() {
         return new ProcurementFragment();
     }
@@ -38,12 +39,15 @@ public class ProcurementFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentProcurementBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
+        return binding.getRoot();
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
+        procurementFragmentViewModel = new ViewModelProvider(this).get(ProcurementFragmentViewModel.class);
 
-        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
-
+        recyclerViewFragment = new RecyclerViewFragment();
         binding.completeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +77,7 @@ public class ProcurementFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // do nothing
             }
         });
         procurementFragmentViewModel.getSkuListLiveData().observe(this.requireActivity(), new Observer<List<ProcurementModel>>() {
@@ -95,21 +99,13 @@ public class ProcurementFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // do nothing
             }
         });
-        return view;
     }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ProcurementFragmentViewModel.class);
-        // TODO: Use the ViewModel
     }
 }
