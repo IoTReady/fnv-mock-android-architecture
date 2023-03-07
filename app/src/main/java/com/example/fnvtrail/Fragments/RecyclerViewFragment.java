@@ -23,14 +23,15 @@
     import com.example.fnvtrail.ViewModels.RecyclerViewViewModel;
     import com.example.fnvtrail.R;
     import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
+    import com.example.fnvtrail.databinding.FragmentRecyclerViewBinding;
 
     import java.util.Arrays;
 
     public class RecyclerViewFragment extends Fragment {
 
         private RecyclerViewViewModel mViewModel;
-
         private RecyclerViewAdapter adapter;
+        private FragmentRecyclerViewBinding binding;
         public static RecyclerViewFragment newInstance() {
             return new RecyclerViewFragment();
         }
@@ -38,15 +39,16 @@
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.common_recycler_view);
+            binding = FragmentRecyclerViewBinding.inflate(getLayoutInflater(), container, true);
+            View view = binding.getRoot();
+
             ProcurementFragmentViewModel procurementFragmentViewModel = new ViewModelProvider(requireActivity()).get(ProcurementFragmentViewModel.class);
             TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL));
+            binding.commonRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.commonRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL));
             adapter = new RecyclerViewAdapter(Arrays.asList());
-            recyclerView.setAdapter(adapter);
+            binding.commonRecyclerView.setAdapter(adapter);
 
             if (requireActivity().findViewById(R.id.fragment_procurement_id) != null) {
                 procurementFragmentViewModel.getSelectedSupplier().observe(getViewLifecycleOwner(), new Observer<String>() {

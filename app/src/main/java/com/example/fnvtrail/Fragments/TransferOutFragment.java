@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import com.example.fnvtrail.Models.TransferOutModel;
 import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
 import com.example.fnvtrail.R;
+import com.example.fnvtrail.databinding.FragmentProcurementBinding;
+import com.example.fnvtrail.databinding.FragmentTransferOutBinding;
 
 import java.util.List;
 
@@ -29,19 +31,18 @@ public class TransferOutFragment extends Fragment {
     public static TransferOutFragment newInstance() {
         return new TransferOutFragment();
     }
-
+    private FragmentTransferOutBinding binding;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // inflating the view with TransferOut Layout
-        View view=inflater.inflate(R.layout.fragment_transfer_out, container, false);
+        binding = FragmentTransferOutBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
 
         // creating a ViewModel
         TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
-        // show the recycler view when the button is clicked
-        Button getCrateButton = view.findViewById(R.id.get_crate);
         RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
-        getCrateButton.setOnClickListener(new View.OnClickListener() {
+        binding.getCrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // creating a recyclerViewFragment instance and replacing it with the card-view
@@ -51,19 +52,17 @@ public class TransferOutFragment extends Fragment {
             }
         });
 
-        // creating a spinner
-        Spinner spinner =  view.findViewById(R.id.search_warehouse_spinner);
         transferOutFragmentViewModel.getWarehouseListLiveData().observe(this.requireActivity(), new Observer<List<TransferOutModel>>() {
             @Override
             public void onChanged(List<TransferOutModel> transfer2) {
                 if(getContext() != null) {
                     ArrayAdapter<TransferOutModel> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, transfer2);
                     adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                    spinner.setAdapter(adapter);
+                    binding.searchWarehouseSpinner.setAdapter(adapter);
                 }
             }
         });
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.searchWarehouseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TransferOutModel selectedWarehouse = (TransferOutModel) adapterView.getItemAtPosition(i);
