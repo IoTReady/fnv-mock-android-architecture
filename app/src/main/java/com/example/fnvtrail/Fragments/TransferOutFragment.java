@@ -32,20 +32,24 @@ public class TransferOutFragment extends Fragment {
         return new TransferOutFragment();
     }
     private FragmentTransferOutBinding binding;
+    private RecyclerViewFragment recyclerViewFragment;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // inflating the view with TransferOut Layout
         binding = FragmentTransferOutBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
+        return binding.getRoot();
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         // creating a ViewModel
         TransferOutFragmentViewModel transferOutFragmentViewModel = new ViewModelProvider(requireActivity()).get(TransferOutFragmentViewModel.class);
-        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
+        recyclerViewFragment = new RecyclerViewFragment();
         binding.getCrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // creating a recyclerViewFragment instance and replacing it with the card-view
                 FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
                 transaction.replace(R.id.transfer_out_cardView, recyclerViewFragment);
                 transaction.commit();
@@ -75,9 +79,8 @@ public class TransferOutFragment extends Fragment {
 
             }
         });
-
-        return view;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
