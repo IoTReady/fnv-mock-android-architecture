@@ -1,4 +1,4 @@
-package com.example.fnvtrail.Fragments;
+package com.example.fnvMock.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,10 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.fnvtrail.Models.ProcurementModel;
-import com.example.fnvtrail.R;
-import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
-import com.example.fnvtrail.databinding.FragmentProcurementBinding;
+import com.example.fnvMock.Models.ProcurementModel;
+import com.example.fnvMock.R;
+import com.example.fnvMock.ViewModels.ProcurementFragmentViewModel;
+import com.example.fnvMock.databinding.FragmentProcurementBinding;
 
 import java.util.List;
 

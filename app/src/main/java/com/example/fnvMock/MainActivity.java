@@ -1,18 +1,17 @@
-package com.example.fnvtrail;
+package com.example.fnvMock;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.fnvtrail.Fragments.ProcurementFragment;
-import com.example.fnvtrail.Fragments.TransferOutFragment;
-import com.example.fnvtrail.databinding.ActivityMainBinding;
+import com.example.fnvMock.Fragments.ProcurementFragment;
+import com.example.fnvMock.Fragments.TransferOutFragment;
+import com.example.fnvMock.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.fnvtrail.ViewModels;
+package com.example.fnvMock.ViewModels;
 
 import androidx.lifecycle.ViewModel;
 

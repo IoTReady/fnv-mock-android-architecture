@@ -1,4 +1,4 @@
-package com.example.fnvtrail;
+package com.example.fnvMock;
 
 import android.content.Context;
 

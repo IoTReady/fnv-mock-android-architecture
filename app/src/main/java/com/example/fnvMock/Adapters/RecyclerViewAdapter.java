@@ -1,4 +1,4 @@
-package com.example.fnvtrail.Adapters;
+package com.example.fnvMock.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fnvtrail.R;
+import com.example.fnvMock.R;
 
 import java.util.ArrayList;
 import java.util.List;

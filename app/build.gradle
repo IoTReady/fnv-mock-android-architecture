@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.fnvtrail'
+    namespace 'com.example.fnvMock'
     compileSdk 33
 
 
@@ -12,7 +12,7 @@ android {
         }
 
     defaultConfig {
-        applicationId "com.example.fnvtrail"
+        applicationId "com.example.fnvMock"
         minSdk 24
         targetSdk 33
         versionCode 1

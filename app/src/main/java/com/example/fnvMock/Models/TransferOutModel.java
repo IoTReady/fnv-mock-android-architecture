@@ -1,4 +1,4 @@
-package com.example.fnvtrail.Models;
+package com.example.fnvMock.Models;
 
 import androidx.annotation.NonNull;
 

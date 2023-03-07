@@ -1,4 +1,4 @@
-    package com.example.fnvtrail.Fragments;
+    package com.example.fnvMock.Fragments;
 
     import android.os.Bundle;
     import android.util.Log;
@@ -14,12 +14,12 @@
     import androidx.recyclerview.widget.DividerItemDecoration;
     import androidx.recyclerview.widget.LinearLayoutManager;
 
-    import com.example.fnvtrail.Adapters.RecyclerViewAdapter;
-    import com.example.fnvtrail.GenerateCrateID;
-    import com.example.fnvtrail.R;
-    import com.example.fnvtrail.ViewModels.ProcurementFragmentViewModel;
-    import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
-    import com.example.fnvtrail.databinding.FragmentRecyclerViewBinding;
+    import com.example.fnvMock.Adapters.RecyclerViewAdapter;
+    import com.example.fnvMock.GenerateCrateID;
+    import com.example.fnvMock.R;
+    import com.example.fnvMock.ViewModels.ProcurementFragmentViewModel;
+    import com.example.fnvMock.ViewModels.TransferOutFragmentViewModel;
+    import com.example.fnvMock.databinding.FragmentRecyclerViewBinding;
 
     import java.util.Arrays;
 

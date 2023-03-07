@@ -1,4 +1,4 @@
-package com.example.fnvtrail.Fragments;
+package com.example.fnvMock.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,10 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.fnvtrail.Models.TransferOutModel;
-import com.example.fnvtrail.R;
-import com.example.fnvtrail.ViewModels.TransferOutFragmentViewModel;
-import com.example.fnvtrail.databinding.FragmentTransferOutBinding;
+import com.example.fnvMock.Models.TransferOutModel;
+import com.example.fnvMock.R;
+import com.example.fnvMock.ViewModels.TransferOutFragmentViewModel;
+import com.example.fnvMock.databinding.FragmentTransferOutBinding;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.example.fnvtrail.ViewModels;
+package com.example.fnvMock.ViewModels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.fnvtrail.Models.ProcurementModel;
+import com.example.fnvMock.Models.ProcurementModel;
 
 import java.util.ArrayList;
 import java.util.List;
