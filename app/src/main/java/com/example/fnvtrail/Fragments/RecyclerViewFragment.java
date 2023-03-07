@@ -34,7 +34,7 @@
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                                  @Nullable Bundle savedInstanceState) {
-            binding = FragmentRecyclerViewBinding.inflate(getLayoutInflater(), container, true);
+            binding = FragmentRecyclerViewBinding.inflate(getLayoutInflater(), container, false);
             return binding.getRoot();
         }
 
